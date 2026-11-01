@@ -130,19 +130,19 @@ export function Navbar() {
 
       {mobileOpen && (
         // ✅ Fixed height so sheet fits under nav; overflow-y-auto so long lists scroll
-        <div className="container-shell bg-white border-t border-slate-100 mt-2 py-5 md:hidden rounded-2xl overflow-y-auto shadow-lg shadow-primary/10!">
-          <div className="grid grid-cols-3 gap-x-4 gap-y-2 text-sm font-semibold text-slate-600">
-            <Link to="/" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-lg"> Home </Link>
-            <Link to="/about" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-lg"> About </Link>
-            <Link to="/contact" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-lg"> Contact </Link>
-            <Link to="/docs" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-lg"> Documentation </Link>
+        <div className="container-shell bg-white border-t border-slate-100 mt-2 px-2 py-3 md:hidden rounded-2xl overflow-y-auto shadow-lg shadow-primary/10!">
+          <div className="grid grid-cols-3 gap-x-1 gap-y-2 text-sm font-medium text-slate-600">
+            <Link to="/" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-xl"> Home </Link>
+            <Link to="/about" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-xl"> About </Link>
+            <Link to="/contact" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-xl"> Contact </Link>
+            <Link to="/docs" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-xl"> Documentation </Link>
 
             {/* ✅ Fixed "Features" — was jumping to #business (wrong section) */}
-            <Link to="/how-it-works" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-lg"> How it works </Link>
-            <Link to="/pricing" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-lg"> Pricing </Link>
-            <Link to="/blog" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-lg"> Blog </Link>
-            <a href="#business" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-lg"> For businesses </a>
-            <Link to="/track" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-lg"> Track </Link>
+            <Link to="/how-it-works" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-xl"> How it works </Link>
+            <Link to="/pricing" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-xl"> Pricing </Link>
+            <Link to="/blog" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-xl"> Blog </Link>
+            <a href="#business" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-xl"> For businesses </a>
+            <Link to="/track" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-xl"> Track </Link>
           </div>
         </div>
       )}
