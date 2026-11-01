@@ -16,7 +16,7 @@ export function Navbar() {
   }, [location.pathname]);
 
   return (
-    <nav className="fixed z-50 top-4 left-1/2 -translate-x-1/2 w-[calc(100%-30px)] md:top-0 md:relative min-h-12 md:h-24 md:w-full">
+    <nav className="fixed z-50 top-4 left-1/2 -translate-x-1/2 w-[calc(100%-30px)] md:top-0 md:relative h-14 md:h-24 md:w-full">
       <div className="w-full h-full flex items-center justify-between gap-2.5 py-2 px-2 md:px-8 bg-white md:bg-primary/10 rounded-full md:rounded-t-3xl! md:rounded-none shadow-lg shadow-primary/10! md:shadow-none!">
         <div className="w-full flex items-center justify-start">
           <Link to="/" aria-label="Abuja Messenger" className="ml-2 flex items-center gap-1.5 md:gap-2.25 text-xs md:text-sm font-semibold leading-4.5">
@@ -42,7 +42,7 @@ export function Navbar() {
               href="#business"
               className="text-sm text-slate-500 transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-lg"
             >
-              For businesses
+              Customers
             </a>
 
             <div className="group relative">
@@ -141,7 +141,7 @@ export function Navbar() {
             <Link to="/how-it-works" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-xl"> How it works </Link>
             <Link to="/pricing" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-xl"> Pricing </Link>
             <Link to="/blog" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-xl"> Blog </Link>
-            <a href="#business" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-xl"> For businesses </a>
+            <a href="#business" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-xl"> Customers </a>
             <Link to="/track" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-xl"> Track </Link>
           </div>
         </div>
