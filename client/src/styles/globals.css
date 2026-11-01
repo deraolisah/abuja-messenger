@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap");
+
+@import "tailwindcss";
+
+/* TAILWIND CUSTOM CSS VARIABLES — globals (magenta/plum brand) */
+@theme {
+  /* brand */
+  --color-primary: #da026d;    
+  --color-primary-alt: #950c5a;    
+  /* --color-primary: #d50082;     */
+  /* --color-ink: #1b1028; */          /* Text Colour */
+  --color-ink: #1b1028;          /* primary text colour */
+  
+  --color-plum: #36133f;
+
+  /* --color-abuja-blue: #3B6EA8; */
+
+
+  /* --color-magenta: #d50082; */
+  --color-pink: #f000a8;
+  --color-violet: #7d28d6;
+  --color-lilac: #f7e7ff;
+  --color-cream: #fffaff;
+  --color-brand-muted: #756b7d;
+
+  /* aliases so the existing component classes below keep compiling */
+  --color-cloud: #fffaff;        /* used by .page-shell / .page-loader */
+  --color-mint: #e5f8ee;         /* status-pill-ready bg */
+  --color-amber: #fff2d5;        /* status-pill-pending bg */
+
+  /* display font */
+  --font-display: "Space Grotesk", "DM Sans", ui-sans-serif, system-ui, sans-serif;
+
+  /* soft card shadow (Tailwind v4 syntax for custom shadow) */
+  --shadow-soft: 0 18px 40px -20px rgba(54, 19, 63, 0.18);
+  --shadow-primary: 0 16px 32px -14px rgba(213, 0, 130, 0.45);
+}
+
+:root {
+  font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  /* color: #1b1028; */
+  /* background: #fffaff; */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* { 
+  box-sizing: border-box; 
+  color: inherit;
+}
+body { 
+  margin: 0; 
+  min-width: 320px; 
+  color: var(--color-ink) !important;
+}
+/* button, input, textarea, select { font: inherit; } */
+button { cursor: pointer; }
+
+a { color: inherit; text-decoration: none; }
+
+@layer components {
+  /* .page-shell { @apply min-h-screen overflow-hidden bg-cream text-plum; } */
+  .container-shell { @apply mx-auto w-full max-w-[1440px] overflow-x-hidden px-4 md:px-8; }
+  .eyebrow { @apply text-[11px] font-bold uppercase tracking-[0.24em] text-primary; }
+  .display-heading { @apply font-display text-4xl font-semibold leading-[1.02] tracking-[-0.055em] text-plum sm:text-6xl; }
+  .body-copy { @apply text-[15px] leading-7 text-brand-muted; }
+  .button-primary { @apply inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-white! transition hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-[#ffd8f0] disabled:cursor-not-allowed disabled:opacity-60; }
+  .button-secondary { @apply inline-flex items-center justify-center gap-2 rounded-xl bg-white px-4 py-3 text-sm font-semibold transition hover:-translate-y-0.5 border border-primary hover:text-primary! focus:outline-none focus:ring-4 focus:ring-[#fff0f9]; }
+  .glass-card { @apply rounded-[30px] border border-white/80 bg-white/90 shadow-soft backdrop-blur-xl; }
+  .status-pill { @apply inline-flex items-center gap-1.5 rounded-full px-3.5 py-2 text-[11px] font-bold; }
+  .status-pill-ready { @apply bg-mint text-[#167a4b]; }
+  .status-pill-pending { @apply bg-amber text-[#a35d00]; }
+  .status-pill-info { @apply bg-lilac text-violet; }
+  .field-label { @apply mb-2 block text-xs font-bold uppercase tracking-[0.16em] text-brand-muted; }
+  .field-input { @apply w-full rounded-2xl border border-primary bg-white px-4 py-3.5 text-sm text-plum outline-none transition placeholder:text-[#a99eb0] focus:border-primary/50 focus:ring-4 focus:ring-[#fff0f9]; }
+}
+
+.page-loader { @apply grid min-h-screen place-items-center bg-cream text-sm font-semibold text-brand-muted; }
+
+.route-grid {
+  background-color: #f8eefe;
+  background-image:
+    linear-gradient(rgba(213, 0, 130, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(213, 0, 130, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.logo-ring {
+  box-shadow:
+    0 0 0 5px rgba(240, 0, 168, 0.10),
+    0 12px 28px rgba(125, 40, 214, 0.18);
+}

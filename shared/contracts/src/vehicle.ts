@@ -1,0 +1,47 @@
+export const VEHICLE_SEEDS = [
+  {
+    slug: "two-wheeler",
+    name: "2 Wheeler",
+    description: "The nimble choice for documents, meals, and everyday parcels.",
+    maxWeightKg: 15,
+    maxLengthCm: 50,
+    maxWidthCm: 40,
+    maxHeightCm: 40,
+    baseFareKobo: 180000,
+    pricePerKmKobo: 6500,
+    minimumFareKobo: 250000,
+    estimatedSpeedKph: 28,
+    active: true,
+  },
+  {
+    slug: "four-seater",
+    name: "4 Seater",
+    description: "Extra room for careful, comfortable movement across the city.",
+    maxWeightKg: 100,
+    maxLengthCm: 120,
+    maxWidthCm: 90,
+    maxHeightCm: 90,
+    baseFareKobo: 420000,
+    pricePerKmKobo: 11500,
+    minimumFareKobo: 550000,
+    estimatedSpeedKph: 24,
+    active: true,
+  },
+  {
+    slug: "mini-van",
+    name: "Mini Van",
+    description: "Built for larger loads, multiple packages, and business runs.",
+    maxWeightKg: 500,
+    maxLengthCm: 220,
+    maxWidthCm: 150,
+    maxHeightCm: 140,
+    baseFareKobo: 750000,
+    pricePerKmKobo: 19000,
+    minimumFareKobo: 950000,
+    estimatedSpeedKph: 20,
+    active: true,
+  },
+] as const;
+
+export type VehicleSeed = (typeof VEHICLE_SEEDS)[number];
+export type VehicleSlug = VehicleSeed["slug"];

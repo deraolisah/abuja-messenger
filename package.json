@@ -1,0 +1,31 @@
+{
+  "name": "abuja-messenger-monorepo",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Abuja Messenger courier platform (monorepo)",
+  "workspaces": [
+    "client",
+    "server",
+    "shared/contracts",
+    "shared/config"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n API,WEB -c blue,magenta \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "tsx watch server/src/server.ts",
+    "dev:web": "vite --config client/vite.config.ts",
+    "build": "npm run build:web",
+    "build:web": "vite build --config client/vite.config.ts",
+    "start": "NODE_ENV=production tsx server/src/server.ts",
+    "typecheck": "tsc -b tsconfig.json",
+    "db:seed": "tsx scripts/seed.ts",
+    "db:check": "tsx scripts/check-db.ts"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.6",
+    "typescript": "^5.7.2",
+    "tsx": "^4.19.2"
+  },
+  "dependencies": {
+    "zod": "^4.6.7"
+  }
+}
