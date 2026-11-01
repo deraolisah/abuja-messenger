@@ -15,8 +15,8 @@ import {
   Zap,
   Sparkles
 } from "lucide-react";
-import { useMemo, useState, useEffect, type FormEvent, type ReactNode } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useMemo, useState, useEffect, type ReactNode } from "react";
+import { Link } from "react-router-dom";
 import { VEHICLE_SEEDS, type DeliveryType } from "@abuja-messenger/contracts";
 
 import Rider from "../assets/hero-img.png";
@@ -25,9 +25,6 @@ import deliveries from "../assets/deliveries-1.png";
 import drivers from "../assets/drivers-1.png";
 
 
-import heroImg from "../assets/hero-img.png";
-import heroAsset1 from "../assets/hero-asset-1.png";
-import heroAsset2 from "../assets/hero-asset-2.png";
 import { StatusPill } from "../components/StatusPill.tsx";
 import {
   DELIVERY_TYPE_META,
@@ -95,11 +92,11 @@ const speedIcons: Record<DeliveryType, typeof Zap> = {
   scheduled: CalendarClock,
 };
 
-const whyUs = [
-  { title: "Verified riders", body: "Every rider is vetted, trained, and identifiable by name and plate number.", image: dispatchers },
-  { title: "Live tracking", body: "Follow your item from pickup to doorstep, with an ETA that updates.", image: deliveries },
-  { title: "Fair, upfront pricing", body: "You see the fare before booking. Fares come from distance and vehicle, not guesswork.", image: drivers },
-];
+// const whyUs = [
+//   { title: "Verified riders", body: "Every rider is vetted, trained, and identifiable by name and plate number.", image: dispatchers },
+//   { title: "Live tracking", body: "Follow your item from pickup to doorstep, with an ETA that updates.", image: deliveries },
+//   { title: "Fair, upfront pricing", body: "You see the fare before booking. Fares come from distance and vehicle, not guesswork.", image: drivers },
+// ];
 
 // TODO: replace with real customer quotes before the final handover
 const testimonials = [
@@ -283,29 +280,29 @@ function PriceChecker() {
   );
 }
 
-function TrackBox() {
-  const [code, setCode] = useState("");
-  const navigate = useNavigate();
-  function onSubmit(e: FormEvent) {
-    e.preventDefault();
-    const clean = code.trim().toUpperCase();
-    if (clean) navigate(`/track/${encodeURIComponent(clean)}`);
-  }
-  return (
-    <form onSubmit={onSubmit} className="mx-auto mt-4 flex max-w-sm gap-2">
-      <label htmlFor="home-track" className="sr-only">Tracking code</label>
-      <input
-        id="home-track"
-        value={code}
-        onChange={(e) => setCode(e.target.value)}
-        placeholder="Have a tracking code?"
-        autoComplete="off"
-        className="min-w-0 flex-1 rounded-xl border border-slate-200 bg-white/80 px-4 py-2.5 text-sm outline-none focus:border-abuja-blue"
-      />
-      <button type="submit" className="rounded-xl bg-ink px-4 py-2.5 text-sm font-semibold text-white">Track</button>
-    </form>
-  );
-}
+// function TrackBox() {
+//   const [code, setCode] = useState("");
+//   const navigate = useNavigate();
+//   function onSubmit(e: FormEvent) {
+//     e.preventDefault();
+//     const clean = code.trim().toUpperCase();
+//     if (clean) navigate(`/track/${encodeURIComponent(clean)}`);
+//   }
+//   return (
+//     <form onSubmit={onSubmit} className="mx-auto mt-4 flex max-w-sm gap-2">
+//       <label htmlFor="home-track" className="sr-only">Tracking code</label>
+//       <input
+//         id="home-track"
+//         value={code}
+//         onChange={(e) => setCode(e.target.value)}
+//         placeholder="Have a tracking code?"
+//         autoComplete="off"
+//         className="min-w-0 flex-1 rounded-xl border border-slate-200 bg-white/80 px-4 py-2.5 text-sm outline-none focus:border-abuja-blue"
+//       />
+//       <button type="submit" className="rounded-xl bg-ink px-4 py-2.5 text-sm font-semibold text-white">Track</button>
+//     </form>
+//   );
+// }
 
 /* ------------------------------------------------------------------ */
 /*  Page                                                              */

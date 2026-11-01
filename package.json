@@ -6,8 +6,7 @@
   "workspaces": [
     "client",
     "server",
-    "shared/contracts",
-    "shared/config"
+    "shared/contracts"
   ],
   "scripts": {
     "dev": "concurrently -k -n API,WEB -c blue,magenta \"npm:dev:api\" \"npm:dev:web\"",

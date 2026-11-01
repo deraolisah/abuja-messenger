@@ -21,7 +21,7 @@ export function RegisterPage() {
 
   return <AuthLayout eyebrow="Start moving" title="Create your delivery workspace." description="Set up your account once. Then every delivery starts with a clear, confident next step."><form onSubmit={handleSubmit(onSubmit)} className="grid gap-5">
     {error && <div className="rounded-2xl border border-red-100 bg-red-50 px-4 py-3 text-sm font-semibold text-red-700">{error}</div>}
-    <label><span className="field-label">Full name</span><input className="field-input" type="text" autoComplete="name" placeholder="Your full name" {...register("name", { required: true, minLength: 2 })} /></label>
+    <label><span className="field-label">Full name</span><input className="field-input" type="text" autoComplete="name" placeholder="Your full name" {...register("displayName", { required: true, minLength: 2 })} /></label>
     <label><span className="field-label">Email address</span><input className="field-input" type="email" autoComplete="email" placeholder="you@example.com" {...register("email", { required: true })} /></label>
     <label><span className="field-label">Phone number <span className="normal-case tracking-normal text-slate-400">(optional)</span></span><input className="field-input" type="tel" autoComplete="tel" placeholder="0800 000 0000" {...register("phone")} /></label>
     <label><span className="field-label">Password</span><input className="field-input" type="password" autoComplete="new-password" placeholder="At least 8 characters" {...register("password", { required: true, minLength: 8 })} /></label>
