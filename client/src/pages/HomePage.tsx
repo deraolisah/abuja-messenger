@@ -364,8 +364,8 @@ export function HomePage() {
                 <br />
                 <span className="text-abuja-blue">We're here to help.</span>
               </h1>
-              <p className="mx-auto max-w-lg text-base leading-7 text-slate-500">
-                Check your delivery price, book a dispatch rider, and follow your delivery until it's in the
+              <p className="mx-auto max-w-lg text-base leading-7 text-slate-500 px-2">
+                Check delivery price, book a dispatch rider, and follow your delivery until it's in the
                 right hands.
               </p>
 
