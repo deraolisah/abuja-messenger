@@ -16,7 +16,7 @@ export function Navbar() {
   }, [location.pathname]);
 
   return (
-    <nav className="fixed z-50 top-4 left-1/2 -translate-x-1/2 w-[calc(100%-30px)] md:top-0 md:relative h-fit md:h-24 md:w-full">
+    <nav className="fixed z-50 top-4 left-1/2 -translate-x-1/2 w-[calc(100%-30px)] md:top-0 md:relative min-h-12 md:h-24 md:w-full">
       <div className="w-full h-full flex items-center justify-between gap-2.5 py-2 px-2 md:px-8 bg-white md:bg-primary/10 rounded-full md:rounded-t-3xl! md:rounded-none shadow-lg shadow-primary/10! md:shadow-none!">
         <div className="w-full flex items-center justify-start">
           <Link to="/" aria-label="Abuja Messenger" className="ml-2 flex items-center gap-1.5 md:gap-2.25 text-xs md:text-sm font-semibold leading-4.5">
