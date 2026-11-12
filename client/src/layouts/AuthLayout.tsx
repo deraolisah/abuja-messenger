@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export function AuthLayout({ title, eyebrow, description, children }: { title: string; eyebrow: string; description: string; children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-cloud">
+    <div className="min-h-screenrelative overflow-hidden rounded-2xl bg-primary/10 md:rounded-t-none md:rounded-b-3xl">
       <div className="container-shell py-6">
         <Link to="/" aria-label="Back to home">
           {/* <BrandMark /> */}

@@ -15,6 +15,9 @@ import { LoginPage } from "../pages/LoginPage.tsx";
 import { NotFoundPage } from "../pages/NotFoundPage.tsx";
 import { RegisterPage } from "../pages/RegisterPage.tsx";
 import { TrackPage } from "../pages/TrackPage.tsx";
+import HowItWorks from "../pages/HowItWorks.tsx";
+import Docs from "../pages/Docs.tsx";
+import Blog from "../pages/Blog.tsx";
 
 
 
@@ -31,6 +34,9 @@ export function AppRoutes() {
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/track" element={<TrackPage />} />
         <Route path="/track/:trackingCode" element={<TrackPage />} />
+        <Route path="/how-it-works" element={<HowItWorks />} />
+        <Route path="/docs" element={<Docs />} />
+        <Route path="/blog" element={<Blog />} />
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />

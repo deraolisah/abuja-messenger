@@ -59,9 +59,11 @@ export function RegisterPage() {
         {isSubmitting ? <LoaderCircle className="h-4 w-4 animate-spin" /> : <ArrowRight className="h-4 w-4" />}
         {isSubmitting ? "Creating your workspace…" : "Create account"}
       </button>
-      <p className="text-center text-sm text-slate-500">
+      <p className="text-center text-sm text-slate-500 flex items-center justify-center gap-1">
         Already have an account? 
-        <Link to="/login" className="font-bold text-abuja-blue hover:underline">Log in</Link>
+        <Link to="/login" className="font-bold text-primary! hover:underline">
+          Log in
+        </Link>
       </p>
     </form>
   </AuthLayout>

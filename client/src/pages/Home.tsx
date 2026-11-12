@@ -1,1 +1,0 @@
-// import Rider from "../assets/hero-img.png";
