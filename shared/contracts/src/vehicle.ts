@@ -1,4 +1,5 @@
-import z from "zod";
+// shared/contracts/src/vehicle.ts
+// import z from "zod";
 
 export const VEHICLE_SEEDS = [
   {

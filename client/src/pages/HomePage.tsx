@@ -82,7 +82,7 @@ const steps = [
 
 const vehicleUse: Record<string, string> = {
   "two-wheeler": "Documents, food, phones, small parcels",
-  "three-wheeler": "Boxes, groceries, shop stock, small furniture",
+  "four-seater": "Boxes, groceries, shop stock, small furniture",
   "mini-van": "Heavy loads, multiple boxes, house moves",
 };
 
@@ -254,8 +254,15 @@ function PriceChecker() {
         <div className="mt-4 border-t border-slate-100 pt-4" aria-live="polite">
           <p className="text-xs text-slate-500">About {km} km. Standard delivery prices:</p>
           <div className="mt-3 grid gap-2 sm:grid-cols-3">
-            {VEHICLE_SEEDS.map((v: { slug: string; name: string }) => {
-              const { fareKobo } = estimateFare({ vehicle: v.slug, distanceKm: km, deliveryType: "same_day" });
+            {/* {VEHICLE_SEEDS.map((v: { slug: string; name: string }) => {
+              const { fareKobo } = estimateFare({ vehicle: v.slug, distanceKm: km, deliveryType: "same_day" }); */}
+
+            {VEHICLE_SEEDS.map((v) => {
+              const { fareKobo } = estimateFare({
+                vehicle: v.slug,
+                distanceKm: km,
+                deliveryType: "same_day",
+              });
               return (
                 <div key={v.slug} className="rounded-xl bg-primary/10 px-4 py-3">
                   <p className="text-xs font-semibold text-slate-600">{v.name}</p>
