@@ -235,14 +235,20 @@ function PriceChecker() {
     <div className="mx-auto w-full max-w-xl rounded-2xl bg-white p-4 text-left shadow-sm ring-1 ring-slate-100 sm:p-5">
       <div className="grid gap-3 sm:grid-cols-2">
         <label>
-          <span className="mb-1.5 block text-xs font-semibold text-slate-500">From</span>
+          <span className="mb-1.5 block text-xs font-semibold text-slate-500">
+            {/* From */}
+            Origin
+          </span>
           <select className={selectCls} value={from} onChange={(e) => setFrom(e.target.value)}>
             <option value="">Choose area</option>
             {DISTRICTS.map((d) => <option key={d.name}>{d.name}</option>)}
           </select>
         </label>
         <label>
-          <span className="mb-1.5 block text-xs font-semibold text-slate-500">To</span>
+          <span className="mb-1.5 block text-xs font-semibold text-slate-500">
+            {/* To */}
+            Destination
+          </span>
           <select className={selectCls} value={to} onChange={(e) => setTo(e.target.value)}>
             <option value="">Choose area</option>
             {DISTRICTS.map((d) => <option key={d.name}>{d.name}</option>)}
@@ -250,8 +256,8 @@ function PriceChecker() {
         </label>
       </div>
 
-      {km != null ? (
-        <div className="mt-4 border-t border-slate-100 pt-4" aria-live="polite">
+      {km != null && (
+        <div className="mt-4 border-t border-primary/10 pt-4" aria-live="polite">
           <p className="text-xs text-slate-500">About {km} km. Standard delivery prices:</p>
           <div className="mt-3 grid gap-2 sm:grid-cols-3">
             {/* {VEHICLE_SEEDS.map((v: { slug: string; name: string }) => {
@@ -272,8 +278,8 @@ function PriceChecker() {
             })}
           </div>
 
-          <div className="flex flex-col-reverse sm:flex-row items-center justify-center gap-2 mt-4">
-            <button className="p-2">
+          <div className="flex flex-col-reverse sm:flex-row items-center justify-center gap-2 mt-4 border-t border-primary/10 pt-4">
+            <button type="button" onClick={() => {setFrom(""); setTo(""); }} className="p-2">
               Cancel
             </button>
             <Link
@@ -284,11 +290,12 @@ function PriceChecker() {
             </Link>
           </div>
         </div>
-      ) : (
-        <p className="mt-4 border-t border-slate-100 pt-4 text-xs text-slate-500 text-center">
-          Pick two areas in Abuja to see prices for each vehicle.
-        </p>
       )}
+      {/* // : (
+      //   <p className="mt-4 border-t border-slate-100 pt-4 text-xs text-slate-500 text-center">
+      //     Pick two areas in Abuja to see prices for each vehicle.
+      //   </p>
+      // )} */}
     </div>
   );
 }

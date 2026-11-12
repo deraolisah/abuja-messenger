@@ -110,7 +110,7 @@ export function Navbar() {
                 Dashboard
               </Link>
             ) : (
-              <Link to="/register" className="button-secondary text-nowrap border-none">
+              <Link to="/order" className="button-secondary text-nowrap border-none">
                 Get Started
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
@@ -129,7 +129,7 @@ export function Navbar() {
 
         {mobileOpen && (
           // ✅ Fixed height so sheet fits under nav; overflow-y-auto so long lists scroll
-          <div className="container-shell bg-white border-t border-slate-100 mt-2 px-2 py-3 md:hidden rounded-2xl overflow-y-auto shadow-lg shadow-primary/10!">
+          <div className="container-shell bg-white border-t border-slate-100 mt-2 p-2 md:hidden rounded-2xl overflow-y-auto shadow-lg shadow-primary/10!">
             <div className="grid grid-cols-3 gap-x-1 gap-y-2 text-sm font-medium text-slate-600">
               <Link to="/" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-xl"> Home </Link>
               <Link to="/about" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-xl"> About </Link>
@@ -143,12 +143,25 @@ export function Navbar() {
               <a href="#business" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-xl"> Customers </a>
               <Link to="/track" className="transition duration-500 hover:bg-primary/10 p-2 px-3 rounded-xl"> Track </Link>
             </div>
+            <div className="flex items-center justify-end w-full mt-2">
+              {user ? (
+                <Link to="/app" className="button-secondary">
+                  <Package className="h-4 w-4" />
+                  Dashboard
+                </Link>
+              ) : (
+                <Link to="/order" className="w-full button-primary text-nowrap border-none">
+                  Get Started
+                  <ArrowUpRight className="h-4 w-4" />
+                </Link>
+              )}
+            </div>
           </div>
         )}
 
       </nav>
       {mobileOpen && (
-        <div className="fixed z-50 inset-0 bg-black/65 cursor-pointer" onClick={() => {setMobileOpen(false)}}></div>
+        <div className="flex md:hidden fixed z-50 inset-0 bg-black/65 cursor-pointer" onClick={() => {setMobileOpen(false)}}></div>
       )}
     </>
   );

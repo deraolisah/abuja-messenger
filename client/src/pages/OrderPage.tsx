@@ -148,19 +148,19 @@ function DistrictSelect({
 
 function Stepper({ current }: { current: number }) {
   return (
-    <ol className="flex items-center gap-2">
+    <ol className="w-full flex items-center justify-between gap-2">
       {STEPS.map((s, i) => {
         const done = i < current;
         const active = i === current;
         return (
-          <li key={s.id} className="flex flex-1 items-center gap-2">
+          <li key={s.id} className="w-full flex flex-1 items-center gap-2">
             <span
               aria-current={active ? "step" : undefined}
               className={`grid h-7 w-7 shrink-0 place-items-center rounded-full text-xs font-bold transition ${
                 done
-                  ? "bg-abuja-blue text-white"
+                  ? "bg-primary text-white"
                   : active
-                    ? "bg-ink text-white"
+                    ? "bg-primary text-white!"
                     : "bg-slate-100 text-slate-400"
               }`}
             >
@@ -173,7 +173,7 @@ function Stepper({ current }: { current: number }) {
             >
               {s.label}
             </span>
-            {i < STEPS.length - 1 && <span className="h-px flex-1 bg-slate-200" />}
+            {i < STEPS.length - 1 && <span className="h-px flex-1 bg-primary/20" />}
           </li>
         );
       })}
@@ -702,9 +702,11 @@ export function OrderPage() {
   /* ------------------------------ layout ------------------------------ */
 
   return (
-    <main className="container-shell py-10 pt-24 md:pt-10">
-      <div className="mx-auto max-w-5xl">
-        <Stepper current={step} />
+    <main className="relative overflow-hidden rounded-2xl bg-primary/10 md:rounded-t-none md:rounded-b-3xl">
+      <div className="container-shell py-10 pt-24 md:pt-10 mx-auto max-w-5xl">
+        <div className="w-full mx-auto flex items-center justify-center">
+          <Stepper current={step} />
+        </div>
 
         <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_340px]">
           <section className="rounded-3xl bg-white p-6 ring-1 ring-slate-100 sm:p-8">
@@ -753,7 +755,7 @@ export function OrderPage() {
 
           {/* price summary */}
           <aside className="lg:sticky lg:top-6 lg:self-start">
-            <div className="rounded-3xl bg-ink p-6 text-white">
+            <div className="rounded-3xl bg-primary p-6 text-white!">
               <p className="text-sm font-semibold text-slate-300">Your delivery</p>
 
               {distanceKm == null ? (
@@ -779,7 +781,7 @@ export function OrderPage() {
                 </>
               )}
 
-              <div className="mt-6 flex items-start gap-3 border-t border-white/10 pt-5 text-xs leading-5 text-slate-400">
+              <div className="mt-6 flex items-start gap-3 border-t border-white/50 pt-5 text-xs leading-5 text-slate-400">
                 <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-blue-300" />
                 The final fare is confirmed on booking. No surprise charges, and you can cancel free
                 before a rider picks up.
