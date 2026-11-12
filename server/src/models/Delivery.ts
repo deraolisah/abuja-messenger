@@ -1,7 +1,8 @@
-// apps/api/src/models/Delivery.ts
+// server/src/models/Delivery.ts
 import { Schema, model, type InferSchemaType } from "mongoose";
 
 import { DELIVERY_STATUSES, DELIVERY_TYPES } from "@abuja-messenger/contracts";
+import { VEHICLE_SEEDS } from "@abuja-messenger/contracts";
 
 const PartySchema = new Schema(
   {
@@ -39,7 +40,11 @@ const DeliverySchema = new Schema(
     customerId: { type: Schema.Types.ObjectId, ref: "User", required: true, index: true },
     status: { type: String, enum: DELIVERY_STATUSES, default: "pending_payment", index: true },
     deliveryType: { type: String, enum: DELIVERY_TYPES, required: true },
-    vehicleSlug: { type: String, required: true },
+    vehicleSlug: {
+      type: String,
+      required: true,
+      enum: VEHICLE_SEEDS.map((v: { slug: string }) => v.slug),
+    },
 
     pickup: { type: PartySchema, required: true },
     dropoff: { type: PartySchema, required: true },

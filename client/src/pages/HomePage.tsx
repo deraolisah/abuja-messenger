@@ -77,7 +77,7 @@ const steps = [
   { title: "Enter pickup and drop-off", body: "Tell us where to collect and where to deliver, and what you're sending.", icon: MapPin },
   { title: "See your price", body: "Pick a vehicle and speed. The fare is shown before you pay.", icon: Wallet },
   { title: "A rider is assigned", body: "The nearest available rider collects your item.", icon: Bike },
-  { title: "Follow it live", body: "Track with your code. The recipient confirms with a PIN.", icon: PackageCheck },
+  { title: "Follow it live", body: "Track parcel with your code. The recipient confirms with a PIN.", icon: PackageCheck },
 ];
 
 const vehicleUse: Record<string, string> = {
@@ -254,7 +254,7 @@ function PriceChecker() {
         <div className="mt-4 border-t border-slate-100 pt-4" aria-live="polite">
           <p className="text-xs text-slate-500">About {km} km. Standard delivery prices:</p>
           <div className="mt-3 grid gap-2 sm:grid-cols-3">
-            {VEHICLE_SEEDS.map((v) => {
+            {VEHICLE_SEEDS.map((v: { slug: string; name: string }) => {
               const { fareKobo } = estimateFare({ vehicle: v.slug, distanceKm: km, deliveryType: "same_day" });
               return (
                 <div key={v.slug} className="rounded-xl bg-primary/10 px-4 py-3">
@@ -264,15 +264,21 @@ function PriceChecker() {
               );
             })}
           </div>
-          <Link
-            to={`/order?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`}
-            className="button-primary mt-4 w-full justify-center text-sm sm:w-auto"
-          >
-            Book this delivery <ArrowRight className="h-4 w-4" />
-          </Link>
+
+          <div className="flex flex-col-reverse sm:flex-row items-center justify-center gap-2 mt-4">
+            <button className="p-2">
+              Cancel
+            </button>
+            <Link
+              to={`/order?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`}
+              className="button-primary w-full justify-center text-sm sm:w-auto"
+            >
+              Book this delivery <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       ) : (
-        <p className="mt-4 border-t border-slate-100 pt-4 text-xs text-slate-500">
+        <p className="mt-4 border-t border-slate-100 pt-4 text-xs text-slate-500 text-center">
           Pick two areas in Abuja to see prices for each vehicle.
         </p>
       )}
@@ -387,7 +393,7 @@ export function HomePage() {
 
         {/* =========================== WHY CHOOSE US =========================== */}
         <section className="mt-4 rounded-2xl bg-primary md:rounded-3xl">
-          <div className="container-shell py-14 md:py-20 pb-6">
+          <div className="container-shell pt-8 pb-5 sm:py-14 md:pb-14 md:pt-20">
             <div className="text-center">
               <FadeIn>
                 <SectionTag> Why Choose Us </SectionTag>
@@ -401,7 +407,7 @@ export function HomePage() {
 
 
             <FadeIn>
-              <div className="mt-12 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="mt-6 md:mt-12 grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                 <div className="col-span-1 group rounded-2xl border-6 border-white/20 bg-primary p-1.5">
                   <div className="h-64 overflow-hidden bg-center bg-cover bg-no-repeat rounded-lg">
                     <img src={drivers} alt="Drivers" className="object-cover transition-all duration-500 group-hover:scale-[1.04]" />
@@ -496,9 +502,9 @@ export function HomePage() {
 
         {/* ======================= HOW IT WORKS ========================= */}
         <section id="how-it-works" className="mt-4 rounded-2xl bg-primary/10 ring-1 ring-slate-100 md:rounded-3xl">
-          <div className="container-shell py-14 md:py-20">
-            <SectionHeading tag="How it works">Book in minutes. Deliver in hours.</SectionHeading>
-            <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="container-shell py-8 pb-5 sm:py-14 md:py-20">
+            <SectionHeading tag="How it works">Book in minutes. Immediate delivery.</SectionHeading>
+            <ol className="mt-6 md:mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {steps.map(({ title, body, icon: Icon }, i) => (
                 <li key={title} className="rounded-2xl bg-primary/10 p-6">
                   <div className="flex items-center justify-between">

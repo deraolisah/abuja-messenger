@@ -65,7 +65,7 @@ function LookupForm({
   }
 
   return (
-    <form onSubmit={onSubmit} className={`flex gap-2 ${compact ? "" : "mx-auto max-w-md"}`}>
+    <form onSubmit={onSubmit} className={`flex flex-col sm:flex-row gap-2 ${compact ? "" : "mx-auto max-w-md"}`}>
       <label className="sr-only" htmlFor="tracking-code">
         Tracking code
       </label>
@@ -76,7 +76,7 @@ function LookupForm({
         placeholder="Enter tracking code, e.g. AM-7K2P9X"
         autoCapitalize="characters"
         autoComplete="off"
-        className="min-w-0 flex-1 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-abuja-blue focus:ring-2 focus:ring-abuja-blue/20"
+        className="min-w-0 flex-1 rounded-xl border border-slate-200 bg-white px-4 py-3 text-base outline-none transition focus:border-abuja-blue focus:ring-2 focus:ring-abuja-blue/20"
       />
       <button type="submit" className="button-primary text-sm">
         <Search className="h-4 w-4" />
@@ -321,24 +321,26 @@ export function TrackPage() {
 
   if (!code || viewState === "idle") {
     return (
-      <main className="container-shell py-20 pt-28 text-center md:pt-20">
-        <h1 className="text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">
-          Where's my delivery?
-        </h1>
-        <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-slate-500">
-          Enter the tracking code from your booking confirmation or SMS.
-        </p>
-        <div className="mt-8">
-          <LookupForm />
-        </div>
-        {DEMO_MODE && (
-          <p className="mt-6 text-xs text-slate-400">
-            Demo: try{" "}
-            <Link to="/track/AM-DEMO01" className="font-semibold text-abuja-blue underline">
-              AM-DEMO01
-            </Link>
+      <main className="py-20 pt-28 text-center md:pt-20 overflow-hidden rounded-2xl bg-primary/10 md:rounded-t-none md:rounded-b-3xl">
+        <div className="container-shell">
+          <h1 className="text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">
+            Where's my delivery?
+          </h1>
+          <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-slate-500">
+            Enter the tracking code from your booking confirmation or SMS.
           </p>
-        )}
+          <div className="mt-8">
+            <LookupForm />
+          </div>
+          {DEMO_MODE && (
+            <p className="mt-6 text-xs text-slate-400">
+              Demo: try{" "}
+              <Link to="/track/AM-DEMO01" className="font-semibold text-abuja-blue underline">
+                AM-DEMO01
+              </Link>
+            </p>
+          )}
+        </div>
       </main>
     );
   }
@@ -404,11 +406,11 @@ export function TrackPage() {
   );
 
   return (
-    <main className="container-shell pb-10 pt-24 md:pt-10">
-      <div className="mx-auto max-w-5xl">
+    <main className="relative overflow-hidden rounded-2xl bg-primary/10 md:rounded-t-none md:rounded-b-3xl">
+      <div className="container-shell pb-10 pt-20 md:pt-10 mx-auto max-w-5xl">
         {/* sticky header */}
-        <div className="sticky top-0 z-10 -mx-4 mb-6 border-b border-slate-100 bg-white/85 px-4 py-4 backdrop-blur sm:-mx-6 sm:px-6">
-          <div className="mx-auto flex max-w-5xl flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div className="sticky top-0 z-10 -mx-4 mb-6 sm:-mx-6 px-4 sm:px-6">
+          <div className="rounded-2xl border-b border-slate-100 bg-white/85 px-4 py-4 backdrop-blur mx-auto flex max-w-5xl flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="text-xs font-semibold text-slate-400">Tracking code</p>
               <h1 className="mt-1 font-display text-2xl font-semibold tracking-wider sm:text-3xl">
@@ -460,9 +462,9 @@ export function TrackPage() {
             />
 
             {!delivered && !failed && (
-              <section className="rounded-3xl bg-ink p-6 text-white lg:hidden">
+              <section className="rounded-3xl bg-primary p-6 text-white! lg:hidden">
                 <div className="flex items-center gap-2 text-sm font-semibold text-slate-300">
-                  <KeyRound className="h-4 w-4 text-blue-300" />
+                  <KeyRound className="h-4 w-4 " />
                   Handover PIN
                 </div>
                 <div className="mt-3 flex items-center justify-between">
@@ -503,7 +505,7 @@ export function TrackPage() {
                       {i < TIMELINE_STEPS.length - 1 && (
                         <span
                           aria-hidden
-                          className={`absolute left-[13px] top-7 h-[calc(100%-1.75rem)] w-0.5 ${
+                          className={`absolute left-3.25 top-7 h-[calc(100%-1.75rem)] w-0.5 ${
                             done ? "bg-abuja-blue/70" : "bg-slate-200"
                           }`}
                         />

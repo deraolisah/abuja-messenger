@@ -12,8 +12,14 @@ import pinoHttp from "pino-http";
 import { env, isProduction } from "./config/env.js";
 import { errorHandler, notFoundHandler } from "./middleware/errors.js";
 import { requestId } from "./middleware/request.js";
+
 import { authRouter } from "./modules/auth/routes.js";
+import { adminRouter } from "./modules/admin/routes.js";
+import { riderRouter } from "./modules/rider/routes.js";
+import { deliveriesRouter } from "./modules/deliveries/routes.js";
+import { vehiclesRouter } from "./modules/vehicles/routes.js";
 import { systemRouter } from "./routes/system.js";
+import { resolveAuth } from "./middleware/auth.js";
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const webRoot = path.join(repoRoot, "client");
@@ -56,12 +62,20 @@ export function createApp(): Express {
   app.use(express.json({ limit: "1mb" }));
   app.use(express.urlencoded({ extended: false, limit: "1mb" }));
 
-  app.get("/manus-routes.json", (_req, res) => {
-    res.sendFile(path.join(publicRoot, "manus-routes.json"));
-  });
+  // app.get("/manus-routes.json", (_req, res) => {
+  //   res.sendFile(path.join(publicRoot, "manus-routes.json"));
+  // });
+
+
+  // 
+  app.use(resolveAuth);
 
   app.use("/api/v1", systemRouter);
   app.use("/api/v1/auth", authRouter);
+  app.use("/api/v1/admin", adminRouter);
+  app.use("/api/v1/rider", riderRouter);
+  app.use("/api/v1/deliveries", deliveriesRouter);
+  app.use("/api/v1/vehicles", vehiclesRouter);
 
   // In production, serve the built client and fall back to index.html
   if (isProduction) {

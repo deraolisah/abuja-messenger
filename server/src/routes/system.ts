@@ -1,8 +1,8 @@
 import { Router } from "express";
 
 import { getDatabaseState } from "../config/database.js";
-import { Vehicle } from "../models/Vehicle.js";
-import { asyncRoute } from "./asyncRoute.js";
+// import { Vehicle } from "../models/Vehicle.js";
+// import { asyncRoute } from "./asyncRoute.js";
 
 export const systemRouter: ReturnType<typeof Router> = Router();
 
@@ -17,10 +17,10 @@ systemRouter.get("/health", (req, res) => {
   });
 });
 
-systemRouter.get(
-  "/vehicles",
-  asyncRoute(async (_req, res) => {
-    const vehicles = await Vehicle.find({ active: true }).sort({ baseFareKobo: 1 }).lean();
-    res.json({ vehicles });
-  }),
-);
+// systemRouter.get(
+//   "/vehicles",
+//   asyncRoute(async (_req, res) => {
+//     const vehicles = await Vehicle.find({ active: true }).sort({ baseFareKobo: 1 }).lean();
+//     res.json({ vehicles });
+//   }),
+// );

@@ -1,8 +1,8 @@
-// apps/api/src/realtime/socket.ts
+// server/src/realtime/socket.ts
 import type { Server as HttpServer } from "http";
 import { Server as SocketServer } from "socket.io";
 
-import { env } from "../env";
+import { env } from "../config/env.js";
 
 export function attachSocket(server: HttpServer) {
   const io = new SocketServer(server, {

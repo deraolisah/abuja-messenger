@@ -1,5 +1,5 @@
-// shared/contracts/src/delivery.ts  — CORRECTED
-import type { VehicleSlug } from "./vehicle.js";   // ← add `.js`
+// shared/contracts/src/delivery.ts 
+import type { VehicleSlug } from "./vehicle.js";   
 
 export const DELIVERY_STATUSES = [
   "pending_payment",

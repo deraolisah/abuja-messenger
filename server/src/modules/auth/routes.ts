@@ -7,9 +7,10 @@ import {
   resetPasswordInputSchema,
 } from "@abuja-messenger/contracts";
 
-import { resolveAuth, getRequestUser, requireAuth } from "../../middleware/auth.ts";
-import { validateBody } from "../../middleware/validate.ts";
-import { asyncRoute } from "../../routes/asyncRoute.ts";
+import type { RegisterInput } from "@abuja-messenger/contracts";
+import { getRequestUser, requireAuth } from "../../middleware/auth.js";
+import { validateBody } from "../../middleware/validate.js";
+import { asyncRoute } from "../../routes/asyncRoute.js";
 import {
   clearSessionCookies,
   forgotPassword,
@@ -21,7 +22,8 @@ import {
 } from "./service.js";
 
 export const authRouter: ReturnType<typeof Router> = Router();
-authRouter.use(resolveAuth);
+
+// authRouter.use(resolveAuth);
 
 authRouter.get("/me", (req, res) => {
   res.json({ user: getRequestUser(req) });
@@ -31,14 +33,9 @@ authRouter.post(
   "/register",
   validateBody(registerInputSchema),
   asyncRoute(async (req, res) => {
-    const { displayName, email, phone, password } = req.body as {
-      displayName: string;
-      email: string;
-      phone?: string;
-      password: string;
-    };
+    const { name, username, email, phone, password } = req.body as RegisterInput;
     const user = await register(
-      { displayName, email, ...(phone ? { phone } : {}) },
+      { name, username, email, ...(phone ? { phone } : {}) },
       password,
       res,
     );

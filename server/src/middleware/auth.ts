@@ -1,3 +1,4 @@
+// server/src/middleware/auth.ts
 import type { NextFunction, Request, RequestHandler, Response } from "express";
 
 import type { UserRole } from "@abuja-messenger/contracts";
@@ -24,7 +25,8 @@ export async function resolveAuth(req: Request, _res: Response, next: NextFuncti
   if (accessToken && isDatabaseReady()) {
     try {
       const claims = verifyAccessToken(accessToken);
-      const user = await User.findById(claims.sub).select("+passwordHash");
+      // const user = await User.findById(claims.sub).select("+passwordHash");
+      const user = await User.findById(claims.sub);
       if (user && user.role === claims.role) {
         req.user = user;
         next();
@@ -70,6 +72,18 @@ export function requireRole(...roles: UserRole[]): RequestHandler {
     next();
   };
 }
+
+// middleware/auth.ts
+export const requireActiveRider: RequestHandler = (req, _res, next) => {
+  if (!req.user) { next(new AppError(401, "AUTH_REQUIRED", "Please log in.")); return; }
+  if (req.user.role !== "rider") { next(new AppError(403, "NOT_A_RIDER", "Riders only.")); return; }
+  if (req.user.riderVerificationStatus !== "active") {
+    next(new AppError(403, "RIDER_SUSPENDED", "Your account is suspended."));
+    return;
+  }
+  next();
+};
+
 
 export function getRequestUser(req: Request) {
   return req.user ? toPublicUser(req.user) : null;

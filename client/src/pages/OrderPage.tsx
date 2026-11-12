@@ -201,7 +201,7 @@ export function OrderPage() {
     const to = params.get("to") ?? "";
     const known = (n: string) => (DISTRICTS.some((d) => d.name === n) ? n : "");
     return {
-      pickup: { ...emptyParty, district: known(from), name: user?.displayName ?? "" },
+      pickup: { ...emptyParty, district: known(from), name: user?.name ?? "" },
       dropoff: { ...emptyParty, district: known(to) },
       category: "",
       description: "",

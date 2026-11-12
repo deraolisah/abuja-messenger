@@ -3,9 +3,9 @@ import crypto from "node:crypto";
 import type { Request, Response } from "express";
 
 import { isDatabaseReady } from "../../config/database.js";
-import { env } from "../../config/env.ts";
+import { env } from "../../config/env.js";
 import { AppError } from "../../middleware/errors.js";
-import { User, toPublicUser, type UserHydrated } from "../../models/User.ts";
+import { User, toPublicUser, type UserHydrated } from "../../models/User.js";
 import {
   comparePassword,
   compareToken,
@@ -13,7 +13,7 @@ import {
   hashPassword,
   hashToken,
   verifyRefreshToken,
-} from "./tokens.ts";
+} from "./tokens.js";
 
 const accessCookie = "am_access_token";
 const refreshCookie = "am_refresh_token";
@@ -56,19 +56,25 @@ async function persistSession(user: UserHydrated, res: Response) {
 
 /** Accepts `displayName` (client) or `name` (legacy). */
 export async function register(
-  input: { displayName: string; email: string; phone?: string },
+  input: { name: string; username: string; email: string; phone?: string },
   password: string,
   res: Response,
 ) {
   ensureDatabase();
   const email = input.email.toLowerCase();
-  const existing = await User.findOne({ email });
-  if (existing) {
+  const username = input.username.toLowerCase();
+
+  // Pre-check both for a cleaner error than a Mongo duplicate-key
+  if (await User.exists({ email })) {
     throw new AppError(409, "EMAIL_IN_USE", "An account with that email already exists.");
+  }
+  if (await User.exists({ username })) {
+    throw new AppError(409, "USERNAME_TAKEN", "That username is already taken.");
   }
 
   const user = await User.create({
-    name: input.displayName,
+    name: input.name,
+    username,
     email,
     phone: input.phone ?? null,
     passwordHash: await hashPassword(password),

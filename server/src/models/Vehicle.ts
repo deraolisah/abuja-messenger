@@ -1,4 +1,4 @@
-// apps/api/src/models/Vehicle.ts
+// server/src/models/Vehicle.ts
 import { Schema, model, type InferSchemaType } from "mongoose";
 
 import { VEHICLE_SEEDS } from "@abuja-messenger/contracts";

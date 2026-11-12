@@ -4,7 +4,13 @@
     "composite": true,
     "outDir": "./dist",
     "rootDir": "./src",
+    "paths": {
+      "*": ["./../*"]
+    },
     "types": ["node"]
   },
-  "include": ["src"]
+  "include": ["src"],
+  "references": [
+    { "path": "../shared/contracts" }
+  ]
 }

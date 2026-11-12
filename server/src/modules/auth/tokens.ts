@@ -3,7 +3,7 @@ import jwt, { type SignOptions } from "jsonwebtoken";
 
 import type { UserRole } from "@abuja-messenger/contracts";
 
-import { env } from "../../config/env.ts";
+import { env } from "../../config/env.js";
 
 export type AccessClaims = {
   sub: string;
