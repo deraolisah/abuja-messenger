@@ -9,12 +9,13 @@
     "shared/contracts"
   ],
   "scripts": {
+    "build:shared": "npm run build -w shared/contracts",
+    "build:web": "npm run build:shared && vite build --config client/vite.config.ts",
+    "start": "NODE_ENV=production tsx server/src/server.ts",
     "dev": "concurrently -k -n API,WEB -c blue,magenta \"npm:dev:api\" \"npm:dev:web\"",
     "dev:api": "tsx watch server/src/server.ts",
     "dev:web": "vite --config client/vite.config.ts",
     "build": "npm run build:web",
-    "build:web": "vite build --config client/vite.config.ts",
-    "start": "NODE_ENV=production tsx server/src/server.ts",
     "typecheck": "tsc -b tsconfig.json",
     "db:seed": "tsx scripts/seed.ts",
     "db:check": "tsx scripts/check-db.ts"
