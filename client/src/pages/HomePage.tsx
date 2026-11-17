@@ -193,7 +193,7 @@ function SectionHeading({ tag, children }: { tag?: string; children: ReactNode }
           {tag}
         </span>
       )}
-      <h2 className="mx-auto mt-5 max-w-2xl text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">
+      <h2 className="mx-auto mt-5 max-w-2xl text-3xl font-semibold tracking-[-0.04em] sm:text-5xl leading-normal">
         {children}
       </h2>
     </div>
@@ -582,47 +582,55 @@ export function HomePage() {
           id="business"
           className="mt-4 rounded-2xl bg-primary/10 text-white md:rounded-3xl"
         >
-          <div className="container-shell grid gap-10 py-16 lg:grid-cols-[1fr_0.8fr] lg:items-center lg:py-20">
-            <FadeIn>
-              <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-blue-300">
-                  For teams that move often
-                </p>
-                <h2 className="mt-4 max-w-xl font-display text-3xl font-semibold tracking-[-0.045em] sm:text-5xl">
-                  One dependable layer for your business deliveries.
-                </h2>
-                <p className="mt-5 max-w-lg text-[15px] leading-7 text-slate-300">
-                  Keep repeat deliveries, recipient details, invoices, and status
-                  visibility in one place. Business tools are coming in the next
-                  build phase.
-                </p>
-              </div>
-            </FadeIn>
+          <div className="container-shell py-16 lg:py-20">
+            <SectionHeading tag="Custom roadmaps">
+              Track orders from pickup to final delivery
+            </SectionHeading>
+            <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-center">
+              <FadeIn>
+                <div>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-blue-300">
+                    For teams that move often
+                  </p>
+                  {/* <h2 className="mt-4 max-w-xl font-display text-3xl font-semibold tracking-[-0.045em] sm:text-5xl">
+                    One dependable layer for your business deliveries.
+                  </h2> */}
+                  <p className="mt-5 max-w-lg text-[15px] leading-7 text-slate-300">
+                    Keep repeat deliveries, recipient details, invoices, and status
+                    visibility in one place. Business tools are coming in the next
+                    build phase.
+                  </p>
+                </div>
+                <div className="rounded-[28px] border border-white/10 bg-white/5 p-6">
+                  <div className="flex items-center justify-between border-b border-white/10 pb-5">
+                    <span className="text-sm font-semibold text-slate-300">
+                      Business workspace
+                    </span>
+                    <StatusPill tone="info">Coming soon</StatusPill>
+                  </div>
+                  <div className="mt-6 grid gap-3 text-sm text-slate-300">
+                    <div className="flex items-center gap-3 rounded-2xl bg-white/5 p-4">
+                      <PackageCheck className="h-4 w-4 text-blue-300" /> Bulk
+                      delivery creation
+                    </div>
+                    <div className="flex items-center gap-3 rounded-2xl bg-white/5 p-4">
+                      <Clock3 className="h-4 w-4 text-blue-300" /> Delivery
+                      reporting
+                    </div>
+                    <div className="flex items-center gap-3 rounded-2xl bg-white/5 p-4">
+                      <ShieldCheck className="h-4 w-4 text-blue-300" /> Team
+                      permissions
+                    </div>
+                  </div>
+                </div>
+              </FadeIn>
 
-            <FadeIn delay={180}>
-              <div className="rounded-[28px] border border-white/10 bg-white/5 p-6">
-                <div className="flex items-center justify-between border-b border-white/10 pb-5">
-                  <span className="text-sm font-semibold text-slate-300">
-                    Business workspace
-                  </span>
-                  <StatusPill tone="info">Coming soon</StatusPill>
+              <FadeIn delay={180}>
+                <div className="w-full h-100 rounded-2xl bg-primary p-4 flex items-center justify-center">
+                  Image Here
                 </div>
-                <div className="mt-6 grid gap-3 text-sm text-slate-300">
-                  <div className="flex items-center gap-3 rounded-2xl bg-white/5 p-4">
-                    <PackageCheck className="h-4 w-4 text-blue-300" /> Bulk
-                    delivery creation
-                  </div>
-                  <div className="flex items-center gap-3 rounded-2xl bg-white/5 p-4">
-                    <Clock3 className="h-4 w-4 text-blue-300" /> Delivery
-                    reporting
-                  </div>
-                  <div className="flex items-center gap-3 rounded-2xl bg-white/5 p-4">
-                    <ShieldCheck className="h-4 w-4 text-blue-300" /> Team
-                    permissions
-                  </div>
-                </div>
-              </div>
-            </FadeIn>
+              </FadeIn>
+            </div>
           </div>
         </section>
 
