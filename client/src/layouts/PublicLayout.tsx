@@ -17,7 +17,7 @@ export function PublicLayout() {
     //   </div>
     // </div>
 
-    <div className="flex min-h-screen flex-col p-2 md:p-5">
+    <div className="flex min-h-screen flex-col p-4 md:p-5">
       <Navbar />
       <main className="flex-1">
         <Outlet />

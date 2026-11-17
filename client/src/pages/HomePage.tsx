@@ -376,10 +376,10 @@ export function HomePage() {
         </section> */}
 
         {/* ============================ HERO ============================ */}
-        <section className="relative overflow-hidden rounded-2xl bg-primary/10 md:rounded-t-none md:rounded-b-3xl">
+        <section className="relative overflow-hidden rounded-3xl bg-primary/10 md:rounded-t-none">
           <div className="container-shell">
             <div className="mx-auto flex max-w-4xl flex-col items-center gap-4 pt-22 text-center md:pt-8 pb-0!">
-              <h1 className="mt-4 text-4xl font-semibold tracking-[-0.04em] sm:text-6xl md:leading-[1.05]">
+              <h1 className="mt-4 font-semibold tracking-[-0.04em] text-3xl sm:text-5xl md:text-6xl md:leading-[1.05]">
                 Move it across Abuja.
                 <br />
                 <span className="text-abuja-blue">We're here to help.</span>
@@ -406,7 +406,7 @@ export function HomePage() {
 
 
         {/* =========================== WHY CHOOSE US =========================== */}
-        <section className="mt-4 rounded-2xl bg-primary md:rounded-3xl">
+        <section className="mt-4 rounded-3xl bg-primary">
           <div className="container-shell pt-8 pb-5 sm:py-14 md:pb-14 md:pt-20">
             <div className="text-center">
               <FadeIn>
@@ -515,10 +515,10 @@ export function HomePage() {
 
 
         {/* ======================= HOW IT WORKS ========================= */}
-        <section id="how-it-works" className="mt-4 rounded-2xl bg-primary/10 ring-1 ring-slate-100 md:rounded-3xl">
+        <section id="how-it-works" className="mt-4 rounded-3xl bg-primary/10 ring-1 ring-slate-100">
           <div className="container-shell py-8 pb-5 sm:py-14 md:py-20">
             <SectionHeading tag="How it works">Book in minutes. Immediate delivery.</SectionHeading>
-            <ol className="mt-6 md:mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <ol className="mt-6 md:mt-12 grid gap-5 grid-cols-2 lg:grid-cols-4">
               {steps.map(({ title, body, icon: Icon }, i) => (
                 <li key={title} className="rounded-2xl bg-primary/10 p-6">
                   <div className="flex items-center justify-between">

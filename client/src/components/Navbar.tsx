@@ -15,6 +15,23 @@ export function Navbar() {
     setMobileOpen(false);
   }, [location.pathname]);
 
+  // Scroll detection for floating dock transition
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setIsScrolled(window.scrollY > 10);
+  //   };
+  //   window.addEventListener('scroll', handleScroll, { passive: true });
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // }, []);
+
+    // Lock body scroll when mobile drawer is open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileOpen]);
+
   return (
     <>
       <nav className="fixed z-60 top-4 left-1/2 -translate-x-1/2 w-[calc(100%-30px)] md:top-0 md:relative h-14 md:h-24 md:w-full">
