@@ -520,10 +520,10 @@ export function HomePage() {
             <SectionHeading tag="How it works">Book in minutes. Immediate delivery.</SectionHeading>
             <ol className="mt-6 md:mt-12 grid gap-5 grid-cols-2 lg:grid-cols-4">
               {steps.map(({ title, body, icon: Icon }, i) => (
-                <li key={title} className="rounded-2xl bg-primary/10 p-6">
+                <li key={title} className="rounded-2xl bg-white p-6">
                   <div className="flex items-center justify-between">
                     <span className="font-display text-3xl font-semibold text-abuja-blue/60">{i + 1}</span>
-                    <span className="grid h-10 w-10 place-items-center rounded-xl bg-white text-abuja-blue">
+                    <span className="grid h-10 w-10 place-items-center rounded-xl bg-primary text-white!">
                       <Icon className="h-5 w-5" />
                     </span>
                   </div>
